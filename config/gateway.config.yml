@@ -42,7 +42,7 @@ apiEndpoints:
 
 serviceEndpoints:
   mainService:
-    url: "http://35.225.149.42:3011/bestburger"
+    url: "http://a32be4c62a41:3011/bestburger"
 
 policies:
   - proxy
