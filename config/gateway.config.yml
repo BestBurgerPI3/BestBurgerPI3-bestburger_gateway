@@ -1,0 +1,139 @@
+https:
+  port: 3500
+  tls:
+    "*.microtech.icu":
+      key: ./certs/privkey.pem
+      cert: ./certs/cert.pem
+    "default":
+      key: ./certs/privkey.pem
+      cert: ./certs/cert.pem
+admin:
+  port: 9876
+  host: localhost
+
+apiEndpoints:
+  registerUser:
+    host: "*"
+    paths: "/REGISTER_USER"
+  loginUser:
+    host: "*"
+    paths: "/LOGIN_USER"
+  buscarRestaurante:
+    host: "*"
+    paths: "/BUSQUEDA-RESTAURANTE"
+  listarRestaurante:
+    host: "*"
+    paths: "/LISTAR-RESTAURANTE"
+  obtenerInformacion:
+    host: "*"
+    paths: "/OBTENER-INFORMACION"
+  addHamburguesa:
+    host: "*"
+    paths: "/add_hamburguesa"
+  readHamburguesas:
+    host: "*"
+    paths: "/hamburguesas"
+  deleteHamburguesa:
+    host: "*"
+    paths: "/delete_hamburguesa"
+  searchHamburguesa:
+    host: "*"
+    paths: "/search_hamburguesa"
+
+serviceEndpoints:
+  mainService:
+    url: "http://35.225.149.42:3011"
+
+policies:
+  - proxy
+
+pipelines:
+  pipeline_register_user:
+    apiEndpoints:
+      - registerUser
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_login_user:
+    apiEndpoints:
+      - loginUser
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_buscar_restaurante:
+    apiEndpoints:
+      - buscarRestaurante
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_listar_restaurante:
+    apiEndpoints:
+      - listarRestaurante
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_obtener_informacion:
+    apiEndpoints:
+      - obtenerInformacion
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_add_hamburguesa:
+    apiEndpoints:
+      - addHamburguesa
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_read_hamburguesas:
+    apiEndpoints:
+      - readHamburguesas
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_delete_hamburguesa:
+    apiEndpoints:
+      - deleteHamburguesa
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true
+
+  pipeline_search_hamburguesa:
+    apiEndpoints:
+      - searchHamburguesa
+    policies:
+      - proxy:
+          action:
+            secure: false
+            serviceEndpoint: mainService
+            changeOrigin: true

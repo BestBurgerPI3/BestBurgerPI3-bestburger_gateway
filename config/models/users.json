@@ -1,0 +1,33 @@
+{
+  "$id": "http://express-gateway.io/models/users.json",
+  "type": "object",
+  "properties": {
+    "idUsuario": {
+      "type": "integer"
+    },
+    "Nombre": {
+      "type": "string"
+    },
+    "Correo": {
+      "type": "string",
+      "format": "email"
+    },
+    "Contraseña": {
+      "type": "string"
+    },
+    "Nombre_Usuario": {
+      "type": "string"
+    },
+    "Foto_Perfil_idFoto_Perfil": {
+      "type": "integer"
+    },
+    "TipoUsuario_idTipoUsuario": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "Nombre",
+    "Correo",
+    "Nombre_Usuario"
+  ]
+}
